@@ -1,36 +1,58 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import DashboardView from '../views/DashboardView.vue'
-import { watch } from 'vue'
+import { nextTick } from 'vue'
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  // history: createWebHistory("/bs_frontend"),
+  history: createWebHistory(),
   routes: [
     {
       path: '/',
       name: 'home',
       component: DashboardView,
-      title: "Dashboard"
+      meta: {
+        title: "Dashboard"
+      }
     },
     {
       path: '/error',
       name: 'error',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/ErrorView.vue')
+      component: () => import('../views/ErrorView.vue'),
+      meta: {
+        title: 'Spots'
+      }
     },
     {
       path: '/about',
       name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/AboutView.vue')
+      component: () => import('../views/AboutView.vue'),
+      meta: {
+        title: 'About'
+      }
     },
     {
       path: '/test',
-      name: 'test',
-      component:  () => import('/src/views/TestCards.vue')
+      name: 'Test',
+      component:  () => import('/src/views/TestCards.vue'),
+      meta: {
+        title: 'Spots'
+      }
+    },
+    {
+      path: '/spots',
+      name: "Spots",
+      component: () => import("/src/views/Spot/IndexView.vue"),
+      meta: {
+        title: 'Spots'
+      }
+    },
+    {
+      path: '/profile',
+      name: "Profile",
+      component: () => import("/src/views/ProfileView.vue"),
+      meta: {
+        title: 'Profile'
+      }
     }
   ]
 })
@@ -38,18 +60,15 @@ const router = createRouter({
 router.afterEach((to, from, failure) => {
   if (failure) {
     console.log('failed navigation', failure)
-    router.replace('/error')
+    // router.replace('/error')
   }
-  console.log(router.currentRoute);
-  // document.title =+ router.currentRoute.name.title 
-  // document.title = router.currentRoute.value.title
-  // document.title = router.title
-  // document.title = router.getRoutes[0].title
-  
+  // console.log(router.currentRoute);
 
+  // Use next tick to handle router history correctly
+  // see: https://github.com/vuejs/vue-router/issues/914#issuecomment-384477609
+  nextTick(() => {
+    document.title = to.meta.title || import.meta.env.VITE_APP_NAME;
+  });
 })
-// watch(router.title, val => {
-  // document.title = 'lorem'//val
-// })
 
 export default router

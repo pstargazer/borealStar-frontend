@@ -64,12 +64,13 @@ let a = 0
 </script>
 
 <template>
-  <main class="bg-night-bg_lighter dark:bg-night-bg_lighter">
+  <!-- <main class="bg-dark-bg_lighter dark:bg-dark-bg_lighter"> -->
+  <main class="light:bg-light-bg_lighter dark:bg-dark-bg_lighter">
     <div class="container">
       <h1 class="font-kelly">{{ greeting }}</h1>
       <div class="weatherlist py-5">
         <WeatherCard v-for="city in weather" :newCard="false" :key="city" @delCard="deleteCard" :id="city.id" :city_data="city" />
-        <WeatherCard @click="addCity" :city_data="false" :time_factor="3" :newCard="true" />
+        <WeatherCard @click="addCity" :newCard="true" />
       </div>
     </div>
     <div class="gcse-search"></div>
@@ -80,9 +81,9 @@ let a = 0
 .weather-card {
   // --time-factor-skyLum: !important;
 }
+
 .weatherlist {
   display: flex;
-  // flex-direction: row-reverse;
   justify-content: flex-start;
   gap: 1.5em;
   overflow-x: scroll;

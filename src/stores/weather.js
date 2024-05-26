@@ -11,7 +11,6 @@ export const useWeatherStore = defineStore('weather', () => {
     // other options...
     const cities = reactive([])
     const weather = reactive([])
-    const APP_ID = "894dbd1df920520cb8a520e09f6fb708"
    
     watch(weather, ()=>{
         console.log(weather)
@@ -21,6 +20,5 @@ export const useWeatherStore = defineStore('weather', () => {
     return {
         cities,
         weather,
-        APP_ID
     }
 })
