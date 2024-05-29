@@ -8,7 +8,7 @@
     "build hui": "vite build",
     "build": "npm run build:css && npm run build",
     "build:css": "NODE_ENV=production tailwindcss -o src/tailwind.css -m",
-    "start": "concurrently \"npm run start:css\" \"vite\"",
+    "start": "npm run start:css & npm run dev",
     "start:css": "tailwindcss -o src/assets/main.css --watch",
     "preview": "vite preview",
     "test:unit": "vitest",
@@ -37,6 +37,7 @@
     "prettier": "^3.0.3",
     "pusher-js": "^8.4.0-rc2",
     "sass": "^1.71.1",
+    "tailwindcss-theme-variants": "^2.0.0-beta.0",
     "vite": "^5.0.11",
     "vitest": "^1.2.2"
   }

@@ -5,8 +5,21 @@ import WeatherCard from './components/WeatherCard.vue'
 import Header from './components/Header.vue'
 
 /* eslint disable */
-localStorage.theme = 'dark'
+// localStorage.theme = 'dark'
+// localStorage.theme = 'light'
+localStorage.setItem('color-theme', 'dark')
+  if (
+    localStorage.getItem('color-theme') === 'dark' ||
+    (!('color-theme' in localStorage) &&
+      window.matchMedia('(prefers-color-scheme: dark)').matches)
+  ) {
+    document.documentElement.classList.add('dark');
+  } else {
+    document.documentElement.classList.remove('dark');
+  }
 </script>
+
+
 
 <template>
   <Header />
