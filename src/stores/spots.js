@@ -5,22 +5,32 @@ import { reactive } from "vue";
 export const useSpotsStore = defineStore('spots', ()=>{
     const spots = reactive([]);
 
-    function getSpots(page, perPage=10) {
-        // alert(import.meta.env.VITE_APP_BACKEND_URL) 
-        // axios.get(`bs_backend/api/spots/paginated?page=${page}&perpage=${perPage}`)
-        // fetch(`https://localhost:8000/api/spots/paginated?page=${page}&perpage=${perPage}`)
-        fetch(`https://bs_backend:8000/api/spots/paginated?page=${page}&perpage=${perPage}`, {
+    async function getSpots(page, perPage=10) {
+        console.log(import.meta.env.VITE_HOST)
+        // fetch("http://localhost:85/api/spots", {
+        let result = await fetch(`${import.meta.env.VITE_HOST}/api/spots`, {
             method: 'GET',
             mode: 'cors',
             headers: {
                 "Accept": 'application/json',
                 "Access-Control-Allow-Origin": "*"
             }
-            
-            
-            
         })
-        .then(response => console.log(response))
+        .then(response => response.json())
+        return result
+    }
+
+    async function getSpotNames(cities){
+        let result = await fetch(`${import.meta.env.VITE_HOST}/api/spots`, {
+            method: 'GET',
+            mode: 'cors',
+            headers: {
+                "Accept": 'application/json',
+                "Access-Control-Allow-Origin": "*"
+            }
+        })
+        .then(response => response.json())
+        return result
     }
 
     return {

@@ -13,6 +13,8 @@ axios.defaults.baseURL = import.meta.env.VITE_APP_BACKEND_URL;
 
 const app = createApp(App)
 
+// Vue.component('pagination', require('laravel-vue-pagination'));
+
 app.use(createPinia())
 app.use(router)
 

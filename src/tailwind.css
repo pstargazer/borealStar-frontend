@@ -1,25 +1,4 @@
-
 @tailwind base;
-
-@layer base {
-    body {
-    }
-    @media (prefers-color-scheme: light) {
-        body {
-            /* background-color: theme('colors.light.bg'); */
-            color-scheme: light;
-        }
-    }
-
-    @media (prefers-color-scheme: dark) {
-        body {
-            color-scheme: dark;
-            /* background-color: theme('colors.dark.bg'); */
-        }
-    }
-    /* @apply dark:bg-dark-bg; */
-} 
-
-
 @tailwind components;
 @tailwind utilities;
+@tailwind variants;

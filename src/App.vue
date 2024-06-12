@@ -1,29 +1,63 @@
 <script setup>
+
+import { onMounted } from 'vue'
+import { 
+    initAccordions, 
+    initCarousels, 
+    initCollapses, 
+    initDials, 
+    initDismisses, 
+    initDrawers, 
+    initDropdowns, 
+    initModals, 
+    initPopovers, 
+    initTabs, 
+    initTooltips } from 'flowbite'
+
+// initialize components based on data attribute selectors
+onMounted(() => {
+    initAccordions();
+    initCarousels();
+    initCollapses();
+    initDials();
+    initDismisses();
+    initDrawers();
+    initDropdowns();
+    initModals();
+    initPopovers();
+    initTabs();
+    initTooltips();
+})
+
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
 import WeatherCard from './components/WeatherCard.vue'
-import Header from './components/Header.vue'
+import AppHeader from './components/AppHeader.vue'
 
 /* eslint disable */
-// localStorage.theme = 'dark'
-// localStorage.theme = 'light'
-localStorage.setItem('color-theme', 'dark')
-  if (
-    localStorage.getItem('color-theme') === 'dark' ||
-    (!('color-theme' in localStorage) &&
-      window.matchMedia('(prefers-color-scheme: dark)').matches)
-  ) {
-    document.documentElement.classList.add('dark');
-  } else {
-    document.documentElement.classList.remove('dark');
-  }
+
+
+
+
 </script>
 
 
 
 <template>
-  <Header />
-  <RouterView />
+  <AppHeader />
+  <Suspense>
+        <!-- component with nested async dependencies -->
+        <template #default>
+          <RouterView />
+        </template>
+        <template #fallback>
+          <div class="flex flex-col align-center">
+          Loading...
+          </div>
+        </template>
+        <!-- loading state via #fallback slot -->
+        
+  </Suspense>
 </template>
 
 <style lang="scss">
@@ -32,7 +66,16 @@ localStorage.setItem('color-theme', 'dark')
 
 body {
   font-size: 15px;
-  color: white;
+  // color: white;
+  @apply 
+  text-black 
+  bg-light-bg 
+  dark:bg-dark-bg 
+  dark:text-white;
+}
+
+.clickable {
+  // TODO: make outlines
 }
 
 h1 {

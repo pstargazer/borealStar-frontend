@@ -7,7 +7,13 @@ module.exports = {
     mode: 'jit',
     // purge: [],
     darkMode: ['selector'],
-    content: ["./src/**/*.{js,jsx,ts,tsx,vue}"],
+    // darkMode: ['variant', '&:not(.light *)'],
+
+
+    content:[ 
+        "./src/**/*.{js,jsx,ts,tsx,vue}",
+        "./node_modules/flowbite/**/*.js"
+    ],
 
     theme: {
         fontFamily: {
@@ -32,15 +38,14 @@ module.exports = {
                 bg: "#bdd",
                 // bg: '#3E3951',
                 bg_lighter: "#ddd",
-                bg_block: "#54525D",
                 text_common: "#222",
             },
             dark: {
                 // bg: '#3E3951',
                 // bg: '#000',
                 bg: "#262333",
-                bg_lighter: "#443F5A",
-                bg_block: "#54525D",
+                bg_lighter: "#364150",
+                // bg_lighter: "#443F5A",
             },
 
         },
