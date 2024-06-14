@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <h1>Spots</h1>
+        <h1 class="text-2xl">Spots</h1>
         <div class="cards">
                 <!-- <slot name="fallback"> -->
                     <div class="list_card bg-light-bg_lighter dark:bg-dark-bg_lighter" 
@@ -33,7 +33,7 @@ let spots = reactive(await getSpots(10))
 
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 
 .list_card {
     border-radius: 1em;

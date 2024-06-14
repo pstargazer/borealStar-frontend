@@ -20,7 +20,7 @@ function toCelsius(value){
     <p>Давление {{toCelsius(props.city_data.main.pressure)}} hPa</p>
   </div>
   <div v-else class="card new-card">
-    <h2>+</h2>
+    <h2 class="text-md">+</h2>
   </div>
 </template>
 

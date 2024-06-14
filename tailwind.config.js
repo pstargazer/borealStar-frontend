@@ -12,7 +12,8 @@ module.exports = {
 
     content:[ 
         "./src/**/*.{js,jsx,ts,tsx,vue}",
-        "./node_modules/flowbite/**/*.js"
+        "./node_modules/flowbite/**/*.js",
+        "./**/input.css",
     ],
 
     theme: {

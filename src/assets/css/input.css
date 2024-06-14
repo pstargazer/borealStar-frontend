@@ -1,0 +1,69 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Kelly+Slab&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+/* fonts */
+/**
+ * This injects Tailwind's base styles and any base styles registered by
+ * plugins.
+ */
+
+@tailwind base;
+
+
+
+
+
+ /**
+  * This injects Tailwind's component classes and any component classes
+  * registered by plugins.
+  */
+ @tailwind components;
+ 
+
+ /**
+  * This injects Tailwind's utility classes and any utility classes registered
+  * by plugins.
+  */
+ @tailwind utilities;
+ 
+
+ /**
+  * Use this directive to control where Tailwind injects the hover, focus,
+  * responsive, dark mode, and other variants of each class.
+  *
+  * If omitted, Tailwind will append these classes to the very end of
+  * your stylesheet by default.
+  */
+ @tailwind variants;
+
+
+
+
+
+ @layer base {
+  h1 {
+    @apply text-4xl;
+    font-size: xx-large !important;
+  }
+  h2 {
+    @apply text-xl;
+  }
+  h3 {
+    @apply text-lg;
+  }
+  a {
+    @apply text-blue-600 underline;
+  }
+
+/* }
+
+@layer utilities { */
+    .bshadow-dark {
+        box-shadow: 1px 5px 15px 5px rgb(55, 14, 131) inset;
+    }
+    .bshadow-light {
+      box-shadow: 1px 5px 15px 5px rgb(63, 63, 63) inset;
+    }
+
+}
+  

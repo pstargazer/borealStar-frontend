@@ -6,10 +6,10 @@
   "scripts": {
     "dev": "vite --host",
     "build hui": "vite build",
-    "build": "npm run build:css && npm run build",
-    "build:css": "NODE_ENV=production tailwindcss -o src/tailwind.css -m",
+    "build": "npm run build:css",
+    "build:css": "NODE_ENV=production tailwindcss -o src/assets/css/output.css -m",
     "start": "npm run start:css & npm run dev",
-    "start:css": "tailwindcss -o src/assets/main.css --watch",
+    "start:css": "tailwindcss -o src/assets/css/output.css --watch",
     "preview": "vite preview",
     "test:unit": "vitest",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",

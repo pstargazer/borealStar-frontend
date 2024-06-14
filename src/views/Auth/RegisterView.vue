@@ -1,6 +1,6 @@
 <template> 
 <div class="flex flex-col justify-items-center items-center">
-    <h1>Регистрация</h1>
+    <h1 class="text-2xl">Регистрация</h1>
     <form action="" method="post">
         <!-- email -->
         <div class="mt-4">

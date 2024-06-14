@@ -44,38 +44,16 @@
   </header>
 </template>
 
-<style lang="scss" scoped>
-// @tailwind base;
-// @tailwind components;
-// @tailwind utilities;
-// @tailwind variants;
+<style scoped lang="scss">
 
-
-// @layer base {
-
-//   .bshadow-dark {
-//     box-shadow: 1px 5px 15px 5px rgb(55, 14, 131) inset;
-//   }
-  
-//   .bshadow-light {
-//     box-shadow: 1px 5px 15px 5px rgb(63, 63, 63) inset;
-//   }
-// }
 
 header {
-//   -webkit-box-shadow: 1px -10px 24px 11px rgba(0, 0, 0, 0.21) inset;
-//   -moz-box-shadow: 1px -10px 24px 11px rgba(0, 0, 0, 0.21) inset;
-    // border-end-end-radius: 1em;
-    // border-end-start-radius: 1em;
   @apply p-5 
-    bshadow-light 
-    dark:bshadow-dark;
+  bshadow-light
+  dark:bshadow-dark;
 }
 
 
-
-
-//bg-light-bg
 .header-inner{
   /* font-family: "Kelly Slab"; */
   /* font-size:  */
