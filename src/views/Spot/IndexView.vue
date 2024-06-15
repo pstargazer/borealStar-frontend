@@ -1,4 +1,6 @@
 <template>
+          <ThemeSelector/>
+
     <div class="container">
         <h1 class="text-2xl">Spots</h1>
         <div class="cards">
@@ -11,6 +13,7 @@
                         {{spot.updated_at}}
 
                     </div> 
+                    <fwb-pagination v-model="currentPage" :total-items="100" large></fwb-pagination>
         </div>
 
     </div>
@@ -18,10 +21,12 @@
 
 <script setup>
 
+import { FwbPagination } from 'flowbite-vue'
 import { ref, computed, onMounted, reactive } from "vue";
 import { useSpotsStore } from "@/stores/spots.js";
 import { storeToRefs } from "pinia";
 // console.log(import.meta.env.VITE_APP_NAME)
+import ThemeSelector from "/src/components/inputs/ThemeSelector.vue";
 
 const { getSpots, getSpotNames } = useSpotsStore()
 
@@ -29,7 +34,7 @@ let spots = reactive(await getSpots(10))
 // let spotsName = reactive(await getSpotNames(10))
 
 // let 
-// localStorage.setItem('color-theme', 'dark')
+// localStorage.setItem('theme', 'dark')
 
 </script>
 
@@ -51,54 +56,5 @@ let spots = reactive(await getSpots(10))
 
 <script>
 
-// themes
-let themeToggleDarkIcon = document.querySelector('#theme-toggle-dark-icon');
-let themeToggleLightIcon = document.querySelector('#theme-toggle-light-icon');
-console.log(themeToggleLightIcon);
-
-// Change the icons inside the button based on previous settings
-if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-    // if day
-    themeToggleLightIcon.classList.add('hidden');
-    themeToggleDarkIcon.classList.remove('hidden');
-
-} else {
-    // if night
-    themeToggleLightIcon.classList.remove('hidden');
-    themeToggleDarkIcon.classList.add('hidden');
-}
-
-let themeToggleBtn = document.getElementById('theme-toggle');
-console.log(themeToggleBtn);
-
-themeToggleBtn.addEventListener('click', function() {
-
-    // toggle icons inside button
-    themeToggleDarkIcon.classList.toggle('hidden');
-    themeToggleLightIcon.classList.toggle('hidden');
-
-    // if set via local storage previously
-    if (localStorage.getItem('color-theme')) {
-        if (localStorage.getItem('color-theme') === 'light') {
-            document.documentElement.classList.add('dark');
-            localStorage.setItem('color-theme', 'dark');
-        } else {
-            document.documentElement.classList.remove('dark');
-            localStorage.setItem('color-theme', 'light');
-        }
-
-    // if NOT set via local storage previously
-    } else {
-        if (document.documentElement.classList.contains('dark')) {
-            document.documentElement.classList.remove('dark');
-            localStorage.setItem('color-theme', 'light');
-        } else {
-            document.documentElement.classList.add('dark');
-            localStorage.setItem('color-theme', 'dark');
-        }
-    }
-    
-});
-// theme settings end
 
 </script>

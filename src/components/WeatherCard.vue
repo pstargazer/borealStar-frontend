@@ -34,7 +34,7 @@ function toCelsius(value){
 }
 
 .card-image {
-  background: url('')
+  // background: url('')
 }
 
 .card-gradient {

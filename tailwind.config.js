@@ -12,8 +12,9 @@ module.exports = {
 
     content:[ 
         "./src/**/*.{js,jsx,ts,tsx,vue}",
-        "./node_modules/flowbite/**/*.js",
         "./**/input.css",
+        'node_modules/flowbite-vue/**/*.{js,jsx,ts,tsx,vue}',
+        'node_modules/flowbite/**/*.{js,jsx,ts,tsx}',
     ],
 
     theme: {
@@ -38,7 +39,7 @@ module.exports = {
             light: {
                 bg: "#bdd",
                 // bg: '#3E3951',
-                bg_lighter: "#ddd",
+                bg_lighter: "#ffffff",
                 text_common: "#222",
             },
             dark: {

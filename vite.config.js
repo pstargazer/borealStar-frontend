@@ -10,7 +10,13 @@ export default defineConfig({
     host:"bs_frontend"
   },
   plugins: [
-    vue(),
+    vue({
+      // template: {
+        compilerOptions: {
+          isCustomElement: (tag) => ['theme-selector'].includes(tag),
+        }
+      // }
+    })
   ],
   resolve: {
     alias: {

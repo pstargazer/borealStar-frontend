@@ -38,12 +38,11 @@
 
 
 
-
-
  @layer base {
   h1 {
-    @apply text-4xl;
+    @apply text-4xl my-1;
     font-size: xx-large !important;
+    margin: 1em;
   }
   h2 {
     @apply text-xl;
@@ -55,9 +54,16 @@
     @apply text-blue-600 underline;
   }
 
-/* }
+  /* .bshadow-dark {
+    box-shadow: 1px 5px 15px 5px rgb(55, 14, 131) inset;
+  }
+  .bshadow-light {
+    box-shadow: 1px 5px 15px 5px rgb(63, 63, 63) inset;
+  } */
 
-@layer utilities { */
+}
+
+@layer utilities{ 
     .bshadow-dark {
         box-shadow: 1px 5px 15px 5px rgb(55, 14, 131) inset;
     }
@@ -66,4 +72,11 @@
     }
 
 }
-  
+
+
+/* header styles are here cause its not working in component */
+header {
+  @apply p-5 
+  bshadow-light
+  dark:bshadow-dark;
+}

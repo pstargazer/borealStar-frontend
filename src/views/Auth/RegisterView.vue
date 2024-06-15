@@ -18,7 +18,7 @@
         <!-- password end -->
         <!-- checkbox -->
         <div class="flex items-center mt-4 mb-4">
-            <input id="terms" aria-describedby="terms" type="checkbox" class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800" required="" />
+            <input id="terms" aria-describedby="terms" type="checkbox" class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800" required />
             <label for="terms" class="text-gray-500 dark:text-gray-300 ms-2 text-sm">Я согласен с <a class="font-medium text-blue-600 hover:underline dark:text-blue-500" href="#">Правилами сервиса</a></label>
         </div>
         <!-- checkbox end -->

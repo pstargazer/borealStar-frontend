@@ -1,3 +1,10 @@
+<script>
+// import "./inputs/SearchInput.vue";
+import { useAuthStore } from "/src/stores/auth.js";
+const { isAuth } = useAuthStore;
+import ThemeSelector from "/src/components/inputs/ThemeSelector.vue";
+
+</script>
 
 <template>
   <header class="dark:bg-dark-bg">
@@ -10,21 +17,24 @@
         <!-- <SearchInput/> -->
         <!-- <search-input/> -->
         <router-link to="/spots">Точки</router-link>
-        <router-link v-if="isAuth" to="/profile" class="profile">
+        <!-- TODO: vif velse -->
+        <router-link to="/profile" class="profile">
           профиль
           <img src="" class="avatar" alt="">
         </router-link>
-        <router-link v-else="isAuth" to="/login" class="profile">
+        <router-link to="/login" class="profile">
           Войти
           <svg  class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Zm0 0a8.949 8.949 0 0 0 4.951-1.488A3.987 3.987 0 0 0 13 16h-2a3.987 3.987 0 0 0-3.951 3.512A8.948 8.948 0 0 0 12 21Zm3-11a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
           </svg>
         </router-link>
-
+          <ThemeSelector/>
+        <!-- <theme-selector/> -->
 
           <!-- <p></p> -->
         <!-- theme selector -->
-        <button id="theme-toggle" type="button" class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5">
+
+        <!-- <button id="theme-toggle" type="button" class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5">
             <div id="theme-toggle-light-icon">
               <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
               <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5V3m0 18v-2M7.05 7.05 5.636 5.636m12.728 12.728L16.95 16.95M5 12H3m18 0h-2M7.05 16.95l-1.414 1.414M18.364 5.636 16.95 7.05M16 12a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z"/>
@@ -36,22 +46,21 @@
               </svg>
 
             </div>
-        </button>
+        </button> -->
         <!-- theme selector end -->
 
       </nav>
     </div>
+    <ThemeSelector/>
   </header>
+
+
 </template>
 
-<style scoped lang="scss">
+<style lang="scss">
 
 
-header {
-  @apply p-5 
-  bshadow-light
-  dark:bshadow-dark;
-}
+
 
 
 .header-inner{
@@ -96,8 +105,4 @@ nav .avatar {
 }
 </style>
 
-<script>
-import "./inputs/SearchInput.vue";
-import { useAuthStore } from "/src/stores/auth.js";
-const { isAuth } = useAuthStore;
-</script>
+
