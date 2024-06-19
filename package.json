@@ -16,6 +16,7 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@vueuse/core": "^10.11.0",
     "autoprefixer": "^10.4.17",
     "axios": "^1.6.8",
     "flowbite": "^2.3.0",

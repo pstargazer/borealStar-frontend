@@ -19,7 +19,7 @@ const router = createRouter({
       name: 'error',
       component: () => import('../views/ErrorView.vue'),
       meta: {
-        title: 'Spots'
+        title: 'Error'
       }
     },
     {
@@ -36,6 +36,14 @@ const router = createRouter({
       component:  () => import('/src/views/Auth/LoginView.vue'),
       meta: {
         title: 'Login'
+      }
+    },
+    {
+      path: '/register',
+      name: 'register',
+      component:  () => import('/src/views/Auth/RegisterView.vue'),
+      meta: {
+        title: 'register'
       }
     },
     {

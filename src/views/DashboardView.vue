@@ -65,9 +65,9 @@ let a = 0
 
 <template>
   <!-- <main class="bg-dark-bg_lighter dark:bg-dark-bg_lighter"> -->
-  <main class="light:bg-light-bg_lighter dark:bg-dark-bg_lighter">
+  <main class="pt-2 bg-light-bg_lighter dark:bg-dark-bg_lighter">
     <div class="container">
-      <h1 class="font-kelly">{{ greeting }}</h1>
+      <h1 class="font-kelly m-0">{{ greeting }}</h1>
       <div class="weatherlist py-5">
         <WeatherCard v-for="city in weather" :newCard="false" :key="city" @delCard="deleteCard" :id="city.id" :city_data="city" />
         <WeatherCard @click="addCity" :newCard="true" />

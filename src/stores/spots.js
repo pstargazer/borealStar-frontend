@@ -5,10 +5,9 @@ import { reactive } from "vue";
 export const useSpotsStore = defineStore('spots', ()=>{
     const spots = reactive([]);
 
-    async function getSpots(page, perPage=10) {
-        console.log(import.meta.env.VITE_HOST)
-        // fetch("http://localhost:85/api/spots", {
-        let result = await fetch(`${import.meta.env.VITE_HOST}/api/spots`, {
+    async function getSpots(page=1, perPage=10) {
+        console.log("fetching spots...");
+        let result = await fetch(`${import.meta.env.VITE_HOST}/api/spots?per_page=${perPage}&page=${page}`, {
             method: 'GET',
             mode: 'cors',
             headers: {

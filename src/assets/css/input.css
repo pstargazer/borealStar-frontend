@@ -39,20 +39,24 @@
 
 
  @layer base {
-  h1 {
-    @apply text-4xl my-1;
-    font-size: xx-large !important;
-    margin: 1em;
+  body {
+    /* box-sizing: border-box; */
   }
-  h2 {
+
+  body h1 {
+    @apply text-4xl my-5;
+    font-size: xx-large !important;
+    /* margin: 5em 0; */
+  }
+  body h2 {
     @apply text-xl;
   }
-  h3 {
+  body h3 {
     @apply text-lg;
   }
-  a {
+  /* a {
     @apply text-blue-600 underline;
-  }
+  } */
 
   /* .bshadow-dark {
     box-shadow: 1px 5px 15px 5px rgb(55, 14, 131) inset;
