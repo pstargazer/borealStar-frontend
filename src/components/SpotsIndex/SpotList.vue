@@ -49,6 +49,7 @@ function navigateToSingle(id) {
 
 <template>
     <div class="cards">
+
         <SpotCard :data="spot" v-for="(spot) in spots.data" 
         :key="spot.id" />
         <!-- pagination -->
@@ -62,12 +63,13 @@ function navigateToSingle(id) {
             large 
             previous-label="<<<" next-label=">>>"
             >
-
- 
+    
+    
             </fwb-pagination>
         </div>
         <!-- pagination end-->
     </div>
+    <!-- </router-link> -->
 
 </template>
 

@@ -1,30 +1,40 @@
 <script setup>
 import { storeToRefs } from "pinia";
 import WeatherCard from "@/components/WeatherCard.vue";
-import { computed, onMounted, onUpdated, reactive, watch } from "vue";
+import {
+    computed,
+    getCurrentInstance,
+    onMounted,
+    onUpdated,
+    reactive,
+    watch,
+} from "vue";
 
 import { useMySpotsStore } from "../stores/myspots";
 import { computedAsync } from "@vueuse/core";
 
 const { getMySpots } = useMySpotsStore();
-const { mySpots, greeting } = storeToRefs(useMySpotsStore())
+const { mySpots, greeting } = storeToRefs(useMySpotsStore());
 
 // const spots = reactive(mySpots)
 
-let mySpotsGot =  computed(
-    async () => {
-        return await getMySpots()
-    }
-)
+let mySpotsGot = computed(async () => {
+    return await getMySpots();
+});
 
 // await mySpotsGot
 
-mySpots.value = await getMySpots()
+mySpots.value = await getMySpots();
 onMounted(async () => {
-})
+    // redraw
+    const instance = getCurrentInstance();
+    instance?.proxy?.$forceUpdate();
+});
 
 onUpdated(() => {
-    console.log(weather);
+    // console.log(weather);
+    // const instance = getCurrentInstance();
+    // instance?.proxy?.$forceUpdate();
 });
 
 let a = 0;

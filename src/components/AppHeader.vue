@@ -20,8 +20,6 @@ import { storeToRefs } from 'pinia';
 const { toggleMode } = useThemeStore()
 const { getMode, isDark } = storeToRefs(useThemeStore())
 
-// {"test":"test"}
-console.log(parent)
 </script>
 
 <template>

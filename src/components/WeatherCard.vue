@@ -1,5 +1,5 @@
 <script setup>
-import { nextTick, onMounted, onUpdated } from 'vue'
+import { getCurrentInstance, nextTick, onMounted, onUpdated } from 'vue'
 const { newCard, city_data, time_factor, id } = defineProps(['newCard', 'city_data', 'time_factor','id'])
 const emit = defineEmits(['delCard'])
 
@@ -11,7 +11,14 @@ function toCelsius(value){
 
 nextTick(async ()=>{
   console.log(await city_data);
+
 })
+
+onMounted(() => {
+    // redraw
+    // const instance = getCurrentInstance();
+    // instance?.proxy?.$forceUpdate();
+});
 
 </script>
 
@@ -20,7 +27,7 @@ nextTick(async ()=>{
   <div v-if="city_data" class="card card-gradient">
     
     <h2 class="font-kelly text-4xl font-bold">{{JSON.parse(city_data['spot']['names'])[0]['name']}}</h2>
-    <p class="font-lato text-5xl">{{toCelsius(JSON.parse(city_data['weather'][0]['response'])['main']['temp'])}}°</p>
+    <p class="font-lato text-5xl">{{toCelsius(JSON.parse(city_data['weather'][0]['response'])['main']['temp'])}}</p>
     <!-- <p>Чувствуется как {{toCelsius(props.city_data.spot.main.feels_like)}}°</p>
     <p>Давление {{toCelsius(props.city_data.spot.main.pressure)}} hPa</p>  -->
   </div>

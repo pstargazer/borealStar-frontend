@@ -32,8 +32,28 @@ export const useSpotsStore = defineStore('spots', ()=>{
         return result
     }
 
+    async function getSpotSingle(id){
+        console.log(id);
+        let result = await fetch(`${import.meta.env.VITE_HOST}/api/spots/${id}`, {
+            method: 'GET',
+            mode: 'cors',
+            headers: {
+                "Accept": 'application/json',
+                "Access-Control-Allow-Origin": "*"
+            }
+        })
+        .then(response => response.json())
+        return result 
+    }
+
+    function toCelsius(value){
+        return Math.trunc(value - 273) + "°"
+    }
+
     return {
         spots,
-        getSpots
+        getSpots,
+        getSpotSingle,
+        toCelsius
     }
 })

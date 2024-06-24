@@ -63,8 +63,8 @@ nextTick(()=> {
             </div>
         </template>
     </Suspense>
-    <AppFooter />
 </template>
+    <!-- <AppFooter /> -->
 
 <style lang="scss">
 body {

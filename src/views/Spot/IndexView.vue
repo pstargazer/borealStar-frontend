@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <h1 class="text-2xl">Spots</h1>
+        <h1 class="text-2xl">Отслеживаемые точки</h1>
         <SpotList />
     </div>
 </template>

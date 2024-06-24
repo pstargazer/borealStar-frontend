@@ -1,68 +1,14 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import DashboardView from '../views/DashboardView.vue'
 import { nextTick } from 'vue'
+
+import routes from "./routes";
+
+// Vue.config.productionTip = false
 
 const router = createRouter({
   // history: createWebHistory("/bs_frontend"),
   history: createWebHistory(),
-  routes: [
-    {
-      path: '/',
-      name: 'home',
-      component: DashboardView,
-      meta: {
-        title: "Dashboard"
-      }
-    },
-    {
-      path: '/error',
-      name: 'error',
-      component: () => import('../views/ErrorView.vue'),
-      meta: {
-        title: 'Error'
-      }
-    },
-    {
-      path: '/about',
-      name: 'about',
-      component: () => import('../views/AboutView.vue'),
-      meta: {
-        title: 'About'
-      }
-    },
-    {
-      path: '/login',
-      name: 'login',
-      component:  () => import('/src/views/Auth/LoginView.vue'),
-      meta: {
-        title: 'Login'
-      }
-    },
-    {
-      path: '/register',
-      name: 'register',
-      component:  () => import('/src/views/Auth/RegisterView.vue'),
-      meta: {
-        title: 'register'
-      }
-    },
-    {
-      path: '/spots',
-      name: "spots",
-      component: () => import("/src/views/Spot/IndexView.vue"),
-      meta: {
-        title: 'Spots'
-      }
-    },
-    {
-      path: '/profile',
-      name: "profile",
-      component: () => import("/src/views/ProfileView.vue"),
-      meta: {
-        title: 'Profile'
-      }
-    }
-  ]
+  routes: routes
 })
 
 router.afterEach((to, from, failure) => {

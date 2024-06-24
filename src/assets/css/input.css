@@ -44,12 +44,12 @@
   }
 
   body h1 {
-    @apply text-4xl my-5;
+    @apply text-4xl my-5 m-0;
     font-size: xx-large !important;
     /* margin: 5em 0; */
   }
   body h2 {
-    @apply text-xl;
+    @apply text-3xl;
   }
   body h3 {
     @apply text-lg;

@@ -5,20 +5,28 @@ const emits = defineEmits(['navigate'])
 
 let nametable = JSON.parse(data.names) ? JSON.parse(data.names)[0] : false
 let name = nametable ? nametable['name'] : "N/A"
+
+let createdAtReadable = new Date(data.created_at).toDateString()
 </script>
 
 <template>
-    <div class="list_card">
-        {{ name }}
-        <slot name="">
+    <router-link class="list_card flex flex-row" :to="{ name: 'spot_single', params: { id: data.id  }}">
+    <!-- <div > -->
+        <div class="flex flex-col">
+            <h1 сlass="font-kelly m-0">
+                {{ name }}
+            </h1>
+            <span>
+                <!-- Отслеживается с {{data.created_at}} -->
+                Отслеживается с {{createdAtReadable}}
+            </span>
 
-        </slot>
-        <div @click="$emit('navigate')" class="">
         </div>
-        {{data.created_at}}
-        {{data.updated_at}}
+
+        <!-- {{data.updated_at}} -->
         <slot name="default"></slot>
-    </div>
+    <!-- </div> -->
+    </router-link>
     
 </template>
 
