@@ -1,8 +1,19 @@
 import { defineStore } from "pinia";
-import { reactive } from "vue";
+import { computed, reactive } from "vue";
 
 export const useAuthStore = defineStore('auth',()=>{
-    const session = reactive([]);
+
+    let session = computed({
+        get() {
+            if (!localStorage.getItem("auth")) return false
+            // else if (sessionStorage.getItem("auth")) return 
+            else return true
+        },
+        set() {
+
+        }
+    })
+
 
     function isAuth() {
         // check current user auth token

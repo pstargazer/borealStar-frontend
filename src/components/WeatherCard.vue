@@ -1,26 +1,32 @@
 <script setup>
-import { onMounted, onUpdated } from 'vue'
-const props = defineProps(['newCard', 'city_data', 'time_factor','id'])
+import { nextTick, onMounted, onUpdated } from 'vue'
+const { newCard, city_data, time_factor, id } = defineProps(['newCard', 'city_data', 'time_factor','id'])
 const emit = defineEmits(['delCard'])
 
 
 function toCelsius(value){
-  // return value - 273
   return Math.trunc(value - 273)
 }
 
 
+nextTick(async ()=>{
+  console.log(await city_data);
+})
+
 </script>
 
 <template>
-  <div v-if="props.city_data" @click="this.$emit('delCard', props.id)" class="card card-gradient">
-    <h2 class="font-kelly text-4xl font-bold">{{props.city_data.name}}</h2>
-    <p class="font-lato text-5xl">{{toCelsius(props.city_data.main.temp)}}°</p>
-    <p>Чувствуется как {{toCelsius(props.city_data.main.feels_like)}}°</p>
-    <p>Давление {{toCelsius(props.city_data.main.pressure)}} hPa</p>
+
+  <div v-if="city_data" class="card card-gradient">
+    
+    <h2 class="font-kelly text-4xl font-bold">{{JSON.parse(city_data['spot']['names'])[0]['name']}}</h2>
+    <p class="font-lato text-5xl">{{toCelsius(JSON.parse(city_data['weather'][0]['response'])['main']['temp'])}}°</p>
+    <!-- <p>Чувствуется как {{toCelsius(props.city_data.spot.main.feels_like)}}°</p>
+    <p>Давление {{toCelsius(props.city_data.spot.main.pressure)}} hPa</p>  -->
   </div>
-  <div v-else class="card new-card">
+  <div v-else class="card new-card flex-col">
     <h2 class="text-md">+</h2>
+    <p class="text-center">Добавить точку</p>
   </div>
 </template>
 

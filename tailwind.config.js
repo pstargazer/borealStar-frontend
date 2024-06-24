@@ -18,6 +18,9 @@ module.exports = {
     ],
 
     theme: {
+        animations: {
+            fadeIn: 'fadeIn'
+        },
         fontFamily: {
             kelly: "Kelly Slab",
             lato: "Lato",

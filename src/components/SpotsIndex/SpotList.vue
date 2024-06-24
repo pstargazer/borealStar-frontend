@@ -33,7 +33,7 @@ let spots =  computedAsync(
 
 // let spots = reactive(await getSpots(page.value, perPage))
 
-let lorem = 0
+// conat curr_page = ref()
 async function changePage(newPage) {
     // alert(page)
     page.value = newPage
@@ -49,23 +49,21 @@ function navigateToSingle(id) {
 
 <template>
     <div class="cards">
-        <SpotCard :data="spot" v-for="(spot, idx) in spots.data" :key="spot.id" />
+        <SpotCard :data="spot" v-for="(spot) in spots.data" 
+        :key="spot.id" />
         <!-- pagination -->
         <div class="flex justify-center">
-            <fwb-pagination v-model="spots.current_page" 
+            <!-- v-model="spots.current_page"  -->
+            <fwb-pagination 
+            :per-page="spots.per_page"
+            v-model="page" 
             :total-items="spots.total"
             :slice-length="3"
             large 
             previous-label="<<<" next-label=">>>"
             >
 
-                <template v-slot:page-button="{ page, setPage }">
-                    <button @click="changePage(page)" 
-                    class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-                    >
-                    {{ page }}
-                    </button>
-                </template>
+ 
             </fwb-pagination>
         </div>
         <!-- pagination end-->

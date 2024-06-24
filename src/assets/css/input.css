@@ -69,10 +69,10 @@
 
 @layer utilities{ 
     .bshadow-dark {
-        box-shadow: 1px 5px 15px 5px rgb(55, 14, 131) inset;
+        box-shadow: 0px 5px 10px 2px rgb(55, 14, 131) inset;
     }
     .bshadow-light {
-      box-shadow: 1px 5px 15px 5px rgb(63, 63, 63) inset;
+      box-shadow: 0px 5px 10px 2px rgb(63, 63, 63) inset;
     }
 
 }
@@ -83,4 +83,16 @@ header {
   @apply p-5 
   bshadow-light
   dark:bshadow-dark;
+}
+
+
+footer {
+  @apply py-3 
+  bshadow-light
+  dark:bshadow-dark;
+}
+
+
+* {
+  transition: all .1s;
 }
