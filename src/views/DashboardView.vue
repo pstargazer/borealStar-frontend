@@ -37,6 +37,24 @@ onUpdated(() => {
     // instance?.proxy?.$forceUpdate();
 });
 
+function createSpot(){
+    let lat = prompt('Введите широту:')
+    let lon = prompt('Введите долготу:')
+
+    fetch(`${import.meta.env.VITE_HOST}/api/spots/create`, {
+            method: 'POST',
+            mode: 'cors',
+            headers: {
+                "Accept": 'application/json',
+                "Access-Control-Allow-Origin": "*"
+            },
+            body: {
+                lat: lat,
+                lon: lon
+            }
+        })
+}
+
 let a = 0;
 </script>
 
@@ -53,7 +71,7 @@ let a = 0;
                     :id="city.id"
                     :city_data="city"
                 />
-                <WeatherCard :newCard="true" />
+                <WeatherCard :newCard="true" @click="createSpot" />
             </div>
         </div>
         <div class="gcse-search"></div>

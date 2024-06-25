@@ -29,7 +29,6 @@ const { getMode, isDark } = storeToRefs(useThemeStore())
         <img src="/src/assets/svg/logo_dark.svg" v-if="!useThemeStore().isDark" alt="" />
         <img src="/src/assets/svg/logo_light.svg" v-else alt="" />
       </router-link>
-      <SearchInput />
       <nav>
         <router-link to="/spots">Точки</router-link>
         <!-- TODO: vif velse -->

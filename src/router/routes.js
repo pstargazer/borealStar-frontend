@@ -63,6 +63,14 @@ const routes = [
             title: "Профиль",
         },
     },
+    {
+        path: "/spot/create",
+        name: "new_spot",
+        component: () => import("/src/views/Spot/CreateView.vue"),
+        meta: {
+            title: "Создание",
+        },
+    }
 ];
 
 export default routes;
