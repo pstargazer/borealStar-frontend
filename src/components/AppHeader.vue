@@ -33,12 +33,12 @@ const { getMode, isDark } = storeToRefs(useThemeStore())
       <nav>
         <router-link to="/spots">Точки</router-link>
         <!-- TODO: vif velse -->
-        <router-link v-if="session" to="/profile" class="profile">
+        <!-- <router-link v-if="session" to="/profile" class="profile">
           профиль
         </router-link>
         <router-link v-if="!session" to="/login" class="profile">
           Войти
-        </router-link>
+        </router-link> -->
         <ThemeSelector/>
       </nav>
     </div>

@@ -24,13 +24,13 @@ onMounted(() => {
 
 <template>
 
-  <div v-if="city_data" class="card card-gradient">
+  <router-link :to="{ name: 'spot_single', params: { id: city_data['spot'].id  }}" v-if="city_data" class="card card-gradient">
     
     <h2 class="font-kelly text-4xl font-bold">{{JSON.parse(city_data['spot']['names'])[0]['name']}}</h2>
     <p class="font-lato text-5xl">{{toCelsius(JSON.parse(city_data['weather'][0]['response'])['main']['temp'])}}</p>
     <!-- <p>Чувствуется как {{toCelsius(props.city_data.spot.main.feels_like)}}°</p>
     <p>Давление {{toCelsius(props.city_data.spot.main.pressure)}} hPa</p>  -->
-  </div>
+  </router-link>
   <div v-else class="card new-card flex-col">
     <h2 class="text-md">+</h2>
     <p class="text-center">Добавить точку</p>

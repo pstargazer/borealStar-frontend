@@ -25,6 +25,8 @@ let spot = computedAsync(
     [{ error: "failed to fetch data" }],
 );
 
+let lastRecords = []
+
 onMounted(() => {
     // console.log(JSON.parse(spot['spot']['names']));
     setTimeout(() => {
@@ -35,7 +37,7 @@ onMounted(() => {
                 "icon"
             ] +
             "@2x.png";
-
+        lastRecords = JSON.parse(spot["weather"])
         // redraw
         const instance = getCurrentInstance();
         instance?.proxy?.$forceUpdate();
@@ -55,14 +57,63 @@ onMounted(() => {
                     <img :src="imageLink" alt="" />
                     <p>{{ JSON.parse(spot["weather"][0]["response"])["weather"][0]['main'] }}</p>
                     <p>{{ JSON.parse(spot["weather"][0]["response"])["weather"][0]['description'] }}</p>
-                    <p>{{ toCelsius(JSON.parse(spot["weather"][0]["response"])["main"]['temp']) }}</p>
+                    <p class="text-4xl">{{ toCelsius(JSON.parse(spot["weather"][0]["response"])["main"]['temp']) }}</p>
                 </div>
                 <!-- { "id": 800, "main": "Clear", "description": "clear sky", "icon": "01d" } -->
-                <div class="col-span-2">
-                    <div class="flex flex-row gap-3">
-                        
+                <div class="col-span-1">
+                    <div class="grid g-3">
+                        <div>
+                            Чувствуется как
+                            {{ toCelsius(JSON.parse(spot["weather"][0]["response"])["main"]['feels_like']) }}
+                        </div>
+                        <div>
+                            Давление
+                            {{ JSON.parse(spot["weather"][0]["response"])["main"]['pressure'] }}
+                            HPa
+                        </div>
+                        <span>
+                            Давление на уровне моря
+                            {{ JSON.parse(spot["weather"][0]["response"])["main"]['sea_level'] }}
+                            HPa
+                        </span>
+                        <span>
+                            Давление на уровне земли
+                            {{ JSON.parse(spot["weather"][0]["response"])["main"]['grnd_level'] }}
+                            HPa
+                        </span>
+                        <span>
+                            Влажность
+                            {{ JSON.parse(spot["weather"][0]["response"])["main"]['humidity'] }}%
+                        </span>
                     </div>
                 </div>
+                <div class="col-span-1">
+                    <div class="grid g-3">
+                        <span>
+                        Ветер 
+                        {{ JSON.parse(spot["weather"][0]["response"])["wind"]['deg'] }}°
+                        со скоростью
+                        {{ JSON.parse(spot["weather"][0]["response"])["wind"]['speed'] }} m/s
+                    </span>
+                    <span v-if='JSON.parse(spot["weather"][0]["response"])["wind"]["gust"]'>
+                        С порывами до 
+                        {{ JSON.parse(spot["weather"][0]["response"])["wind"]['gust'] }} m/s
+                    </span>
+                    <span>
+                        Время рассвета 
+                        {{ Date(JSON.parse(spot["weather"][0]["response"])["sys"]['sunrise']) }}
+                    </span>
+                    <span>
+                        Время заката
+                        {{ Date(JSON.parse(spot["weather"][0]["response"])["sys"]['sunset']) }}
+                    </span>
+                </div>
+            </div>
+            <div class="col-span-1">
+                Информация получена в 
+                {{ Date(JSON.parse(spot["weather"][0]["response"])['dt']) }}
+            </div>
+
             </div>
         </div>
     </div>
