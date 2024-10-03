@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
-import { reactive, ref } from "vue";
-import { useDark, usePreferredDark, useToggle } from "@vueuse/core";
+import { ref } from "vue";
+import { useDark } from "@vueuse/core";
 
 export const useThemeStore = defineStore("theme", () => {
     // check if dark mode
@@ -16,12 +16,8 @@ export const useThemeStore = defineStore("theme", () => {
         // if set via local storage previously
         if (localStorage.getItem("theme")) {
             if (localStorage.getItem("theme") === "light") {
-                // document.documentElement.classList.add('dark');
-                // localStorage.setItem('theme', 'dark');
                 setDark(true);
             } else {
-                // document.documentElement.classList.remove('dark');
-                // localStorage.setItem('theme', 'light');
                 setDark(false);
             }
 
@@ -29,16 +25,16 @@ export const useThemeStore = defineStore("theme", () => {
         } else {
             if (document.documentElement.classList.contains("dark")) {
                 setDark(false);
-                // document.documentElement.classList.remove('dark');
-                // localStorage.setItem('theme', 'light');
             } else {
                 setDark(true);
-                // document.documentElement.classList.add('dark');
-                // localStorage.setItem('theme', 'dark');
             }
         }
     }
 
+    /**
+     * 
+     * @param {*} dark theme mode: true if dark, false if light
+     */
     function setDark(dark) {
         // true if dark else light
         if (dark) {
@@ -52,12 +48,16 @@ export const useThemeStore = defineStore("theme", () => {
         }
     }
 
+    /**
+     * 
+     * @returns mode of the colortheme, false if light, true if dark
+     */
     function getMode() {
         if (localStorage.getItem("theme") === "light") return false;
         else if (localStorage.getItem("theme") === "dark") return true;
         else {
             // setDark(false);
-            return useDark();
+            return useDark().value;
         }
     }
 
@@ -65,8 +65,7 @@ export const useThemeStore = defineStore("theme", () => {
 
     return {
         isDark,
-        iconLightRef,
-        iconDarkRef,
+        setDark,
         toggleMode,
         getMode
     };

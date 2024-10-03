@@ -55,8 +55,8 @@
 
 <script setup>
 import { storeToRefs } from "pinia";
-import { useThemeStore } from "../../stores/theme";
-import { nextTick, onMounted, ref } from "vue";
+import { useThemeStore } from "../../stores/theme.js";
+import { onMounted, ref } from "vue";
 
 const { toggleMode } = useThemeStore();
 const { isDark, iconDarkRef, iconLightRef } = storeToRefs(useThemeStore());

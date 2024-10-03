@@ -1,5 +1,5 @@
 <script setup>
-import { getCurrentInstance, nextTick, onActivated, onDeactivated, onMounted, onUnmounted, reactive, ref, VueElement, watch } from "vue";
+import { nextTick, onActivated, onDeactivated, ref, watch } from "vue";
 import { useRoute } from "vue-router";
 
 import { useSpotsStore } from "../../stores/spots";

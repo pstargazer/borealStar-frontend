@@ -6,8 +6,6 @@ const { isAuth } = useAuthStore;
 
 
 import ThemeSelector from "/src/components/inputs/ThemeSelector.vue";
-import SearchInput from "/src/components/inputs/SearchInput.vue";
-import { defineAsyncComponent, onMounted, ref } from 'vue'
 
 // const {ThemeSelectorA} = defineAsyncComponent({
 //   loader: ()=> import("/src/components/inputs/ThemeSelector.vue"),
@@ -15,10 +13,8 @@ import { defineAsyncComponent, onMounted, ref } from 'vue'
 // })
 
 import { useThemeStore } from '../stores/theme';
-import { storeToRefs } from 'pinia';
 
-const { toggleMode } = useThemeStore()
-const { getMode, isDark } = storeToRefs(useThemeStore())
+const { getMode, toggleMode, setDark } = useThemeStore()
 
 </script>
 
@@ -26,8 +22,8 @@ const { getMode, isDark } = storeToRefs(useThemeStore())
   <header class="dark:bg-dark-bg">
     <div class="container header-inner">
       <router-link to="/" name="home" class="logo">
-        <img src="/src/assets/svg/logo_dark.svg" v-if="!useThemeStore().isDark" alt="" />
-        <img src="/src/assets/svg/logo_light.svg" v-else alt="" />
+        <img src="/src/assets/svg/logo_dark.svg" v-if="!useThemeStore().isDark" />
+        <img src="/src/assets/svg/logo_light.svg" v-else />
       </router-link>
       <nav>
         <router-link to="/spots">Точки</router-link>

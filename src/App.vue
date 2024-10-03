@@ -1,7 +1,11 @@
 <script setup>
 /* eslint disable */
 
-import { nextTick, onMounted } from "vue";
+import { onBeforeMount, onMounted } from "vue";
+
+import { useThemeStore } from './stores/theme.js';
+const { getMode, setDark } = useThemeStore()
+
 
 import {
     initAccordions,
@@ -42,11 +46,11 @@ import { FwbSpinner } from 'flowbite-vue'
 import { useAuthStore } from "./stores/auth";
 const { session } = useAuthStore();
 
-nextTick(()=> {
-    
-    // defineExpose(session);
-    // console.log(session);
+
+onBeforeMount(() => {
+    setDark(getMode())
 })
+
 
 
 </script>
