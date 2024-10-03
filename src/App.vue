@@ -38,6 +38,7 @@ import { RouterLink, RouterView } from "vue-router";
 import AppHeader from "./components/AppHeader.vue";
 import AppFooter from "./components/AppFooter.vue";
 
+import { FwbSpinner } from 'flowbite-vue'
 import { useAuthStore } from "./stores/auth";
 const { session } = useAuthStore();
 
@@ -52,17 +53,23 @@ nextTick(()=> {
 
 <template>
     <AppHeader />
-    <Suspense>
-        <template #default>
-            <RouterView />
+    <RouterView v-slot="{ Component }">
+        <template v-if="Component">
+            <Transition mode="out-in">
+            <KeepAlive >
+                <Suspense>
+                <component :is="Component"></component>
+                <template #fallback>
+                    <div class="flex flex-row justify-center items-center text-2xl gap-3 p-4">
+                        <fwb-spinner size="8" />
+                        Загрузка...
+                    </div>
+                </template>
+                </Suspense>
+            </KeepAlive>
+            </Transition>
         </template>
-        <template #fallback>
-            <AppHeader />
-            <div class="flex flex-col align-center justify-center">
-                Loading...
-            </div>
-        </template>
-    </Suspense>
+        </RouterView>
 </template>
     <!-- <AppFooter /> -->
 

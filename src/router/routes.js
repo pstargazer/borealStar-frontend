@@ -70,7 +70,17 @@ const routes = [
         meta: {
             title: "Создание",
         },
-    }
+    },
+    {
+        // path: "*",
+        path: "/:catchAll(.*)",
+        name: "NotFound",
+        // component: PageNotFound,
+        component: () => import("../views/ErrorView.vue"),
+        meta: {
+          requiresAuth: false
+        }
+      }
 ];
 
 export default routes;

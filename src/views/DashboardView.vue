@@ -1,41 +1,22 @@
 <script setup>
 import { storeToRefs } from "pinia";
-import WeatherCard from "@/components/WeatherCard.vue";
+// import WeatherCard from "@/components/WeatherCard.vue";
+const WeatherCard = defineAsyncComponent(() => import("@/components/WeatherCard.vue"))
 import {
     computed,
-    getCurrentInstance,
-    onMounted,
-    onUpdated,
-    reactive,
-    watch,
+    defineAsyncComponent
 } from "vue";
 
 import { useMySpotsStore } from "../stores/myspots";
-import { computedAsync } from "@vueuse/core";
 
 const { getMySpots } = useMySpotsStore();
-const { mySpots, greeting } = storeToRefs(useMySpotsStore());
-
-// const spots = reactive(mySpots)
+const { greeting } = storeToRefs(useMySpotsStore());
 
 let mySpotsGot = computed(async () => {
     return await getMySpots();
 });
 
-// await mySpotsGot
-
-mySpots.value = await getMySpots();
-onMounted(async () => {
-    // redraw
-    const instance = getCurrentInstance();
-    instance?.proxy?.$forceUpdate();
-});
-
-onUpdated(() => {
-    // console.log(weather);
-    // const instance = getCurrentInstance();
-    // instance?.proxy?.$forceUpdate();
-});
+let mySpots = await getMySpots();
 
 function createSpot(){
     let lat = prompt('Введите широту:')

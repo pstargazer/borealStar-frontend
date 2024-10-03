@@ -25,7 +25,7 @@ const { getMode, isDark } = storeToRefs(useThemeStore())
 <template>
   <header class="dark:bg-dark-bg">
     <div class="container header-inner">
-      <router-link to="/" class="logo">
+      <router-link to="/" name="home" class="logo">
         <img src="/src/assets/svg/logo_dark.svg" v-if="!useThemeStore().isDark" alt="" />
         <img src="/src/assets/svg/logo_light.svg" v-else alt="" />
       </router-link>

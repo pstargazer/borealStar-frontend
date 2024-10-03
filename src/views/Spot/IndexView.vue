@@ -6,20 +6,10 @@
 </template>
 
 <script setup>
-import SpotList from '../../components/SpotsIndex/SpotList.vue';
+import { defineAsyncComponent } from 'vue';
 
-
-
-</script>
-
-<style lang="scss">
-
-
-
-</style>
-
-
-<script>
-
-
+const SpotList = defineAsyncComponent(() =>
+    import('../../components/SpotsIndex/SpotList.vue')
+)
+// await SpotList
 </script>

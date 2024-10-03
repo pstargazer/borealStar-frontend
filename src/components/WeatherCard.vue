@@ -1,6 +1,6 @@
 <script setup>
-import { getCurrentInstance, nextTick, onMounted, onUpdated } from 'vue'
-const { newCard, city_data, time_factor, id } = defineProps(['newCard', 'city_data', 'time_factor','id'])
+import { nextTick } from 'vue'
+const { city_data } = defineProps(['newCard', 'city_data', 'time_factor','id'])
 const emit = defineEmits(['delCard'])
 
 
@@ -14,19 +14,13 @@ nextTick(async ()=>{
 
 })
 
-onMounted(() => {
-    // redraw
-    // const instance = getCurrentInstance();
-    // instance?.proxy?.$forceUpdate();
-});
-
 </script>
 
 <template>
 
-  <router-link :to="{ name: 'spot_single', params: { id: city_data['spot'].id  }}" v-if="city_data" class="card card-gradient">
+  <router-link :to="{ name: 'spot_single', params: { id: city_data.spot.id  }}" v-if="city_data" class="card card-gradient">
     
-    <h2 class="font-kelly text-4xl font-bold">{{JSON.parse(city_data['spot']['names'])[0]['name']}}</h2>
+    <h2 class="font-kelly text-4xl font-bold">{{JSON.parse(city_data['spot']['names'])?.[0]['name'] || "N/A"}}</h2>
     <p class="font-lato text-5xl">{{toCelsius(JSON.parse(city_data['weather'][0]['response'])['main']['temp'])}}°</p>
     <!-- <p>Чувствуется как {{toCelsius((city_data['weather'][0]['response']).main.feels_like)}}°</p> -->
     <!-- <p>Давление {{toCelsius((city_data['weather'][0]['response']).main.pressure)}} hPa</p>  -->
