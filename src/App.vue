@@ -60,10 +60,12 @@ onBeforeMount(() => {
     <RouterView v-slot="{ Component }">
         <template v-if="Component">
             <Transition mode="out-in">
-            <KeepAlive >
-                <Suspense>
+            <!-- caching the views-->
+            <KeepAlive>
+                <Suspense> <!-- letting view being async-->
                 <component :is="Component"></component>
                 <template #fallback>
+                    <!-- Loading indicator -->
                     <div class="flex flex-row justify-center items-center text-2xl gap-3 p-4">
                         <fwb-spinner size="8" />
                         Загрузка...
